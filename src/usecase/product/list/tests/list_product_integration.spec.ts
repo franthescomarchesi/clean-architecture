@@ -48,7 +48,7 @@ describe("List product integration usecase test", () => {
             }, {
                 id: productB.id,
                 name: productB.name,
-                price: productB.price
+                price: inputB.price * 2
             }]
         })
     })

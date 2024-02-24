@@ -1,4 +1,4 @@
-import { app, sequelize } from "../express";
+import { app, sequelize } from "../../express";
 import request from "supertest"
 
 describe("E2E test for customer", () => {
@@ -77,7 +77,6 @@ describe("E2E test for customer", () => {
         const listResponseXML = await request(app).get("/customer").set("Accept", "application/xml").send()
         expect(listResponseXML.status).toBe(200)
         expect(listResponseXML.text).toContain(`<?xml version="1.0" encoding="UTF-8"?>`)
-        expect(listResponseXML.text).toContain(`<?xml version="1.0" encoding="UTF-8"?>`);
         expect(listResponseXML.text).toContain(`<customers>`)
         expect(listResponseXML.text).toContain(`<customer>`)
         expect(listResponseXML.text).toContain(`<name>customer 01</name>`)
