@@ -14,7 +14,7 @@ export default class UpdateProductUseCase {
         product.changePrice(input.price)
         await this.productRepository.update(product)
         return {
-            id: product.id,
+            id: product.getId(),
             name: product.name,
             price: product.price
         }

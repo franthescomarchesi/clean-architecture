@@ -12,7 +12,7 @@ export default class ListProductUseCase {
         const result = await this.productRepository.findAll()
         return {
             products: result.map((product) => ({
-                id: product.id,
+                id: product.getId(),
                 name: product.name,
                 price: product.price
             }))

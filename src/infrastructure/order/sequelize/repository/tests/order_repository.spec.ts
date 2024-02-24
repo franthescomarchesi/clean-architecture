@@ -43,7 +43,7 @@ describe("Order repository test", () => {
             "1", 
             product.name,
             product.price,
-            product.id,
+            product.getId(),
             2
         );
         const orderRepository = new OrderRepository();
@@ -85,7 +85,7 @@ describe("Order repository test", () => {
             "1", 
             product.name,
             product.price,
-            product.id,
+            product.getId(),
             2
         );
         const orderRepository = new OrderRepository();
@@ -101,14 +101,14 @@ describe("Order repository test", () => {
             "1", 
             product2.name,
             product2.price,
-            product2.id,
+            product2.getId(),
             3
         );
         const orderItem3 = new OrderItem(
             "3", 
             product2.name,
             product2.price,
-            product2.id,
+            product2.getId(),
             6
         );
         order = new Order("1", customer2.getId(), [orderItem2, orderItem3]);
@@ -157,7 +157,7 @@ describe("Order repository test", () => {
             "1", 
             product.name,
             product.price,
-            product.id,
+            product.getId(),
             2
         );
         const orderRepository = new OrderRepository();
@@ -180,7 +180,7 @@ describe("Order repository test", () => {
             "1", 
             product.name,
             product.price,
-            product.id,
+            product.getId(),
             2
         );
         const orderRepository = new OrderRepository();
@@ -196,7 +196,7 @@ describe("Order repository test", () => {
             "2", 
             product2.name,
             product2.price,
-            product2.id,
+            product2.getId(),
             4
         );
         const order2 = new Order("2", customer2.getId(), [orderItem2]);

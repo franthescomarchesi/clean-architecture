@@ -42,11 +42,11 @@ describe("List product integration usecase test", () => {
         const output = await usecase.execute({})
         expect(output).toEqual({
             products: [{
-                id: productA.id,
+                id: productA.getId(),
                 name: productA.name,
                 price: productA.price
             }, {
-                id: productB.id,
+                id: productB.getId(),
                 name: productB.name,
                 price: inputB.price * 2
             }]

@@ -11,7 +11,7 @@ export default class FindProductUseCase {
     async execute(input: InputFindProductDto): Promise<OutputFindProductDto> {
         const product = await this.productRepository.find(input.id)
         return {
-            id: product.id,
+            id: product.getId(),
             name: product.name,
             price: product.price
         }

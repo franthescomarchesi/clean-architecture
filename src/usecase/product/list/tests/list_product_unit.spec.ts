@@ -21,11 +21,11 @@ describe("List product unit usecase test", () => {
         const output = await listProductUseCase.execute({})
         expect(output).toEqual({
             products: [{
-                id: productA.id,
+                id: productA.getId(),
                 name: productA.name,
                 price: productA.price
             }, {
-                id: productB.id,
+                id: productB.getId(),
                 name: productB.name,
                 price: productB.price
             }]

@@ -16,13 +16,13 @@ describe("Find product unit usecase test", () => {
 
     it("should find a product", async () => {
         const input = {
-            id: product.id
+            id: product.getId()
         }
         const repository = mockRepository()
         const findProductUseCase = new FindProductUseCase(repository)
         const output = await findProductUseCase.execute(input)
         expect(output).toEqual({
-            id: product.id,
+            id: product.getId(),
             name: product.name,
             price: product.price
         })

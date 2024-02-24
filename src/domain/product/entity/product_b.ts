@@ -1,22 +1,25 @@
-import ProductInterface from "./product_iterface";
+import Entity from "../../shared/entity/entity_abstract";
+import ProductValidatorFactory from "../factory/product_validator_factory";
+import ProductInterface from "./product_interface";
 
-export default class ProductB implements ProductInterface {
+export default class ProductB extends Entity implements ProductInterface {
 
-    private _id: string;
+    protected CONTEXT = "product"
+
     private _name: string;
     private _price: number;
 
     constructor(id: string, name: string, price: number) {
-        this._id = id;
-        this.validadeId();
+        super()
+        this.id = id;
         this._name = name;
-        this.validadeName();
         this._price = price;
-        this.validadePrice();
+        this.validate()
+        super.hasErrors()
     }
 
-    get id(): string {
-        return this._id;
+    getId(): string {
+        return this.id
     }
 
     get name(): string {
@@ -29,30 +32,18 @@ export default class ProductB implements ProductInterface {
 
     changeName(name: string) {
         this._name = name;
-        this.validadeName();
+        this.validate()
+        super.hasErrors()
     }
 
     changePrice(price: number) {
         this._price = price;
-        this.validadePrice();
+        this.validate()
+        super.hasErrors()
     }
 
-    validadeId() {
-        if (this._id.length === 0) {
-            throw new Error("Id is required");
-        }
-    }
-
-    validadeName() {
-        if (this._name.length === 0) {
-            throw new Error("Name is required");
-        }
-    }
-
-    validadePrice() {
-        if (this._price < 0) {
-            throw new Error("Price must be greater than zero");
-        }
+    validate() {
+        ProductValidatorFactory.create().validate(this)
     }
 
 }

@@ -16,7 +16,7 @@ describe("Updade product unit usecase test", () => {
 
     it("should update a product", async () => {
         const input = {
-            id: product.id,
+            id: product.getId(),
             name: "Product B",
             price: 20
         }

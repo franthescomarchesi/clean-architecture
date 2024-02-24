@@ -1,5 +1,5 @@
 import Product from "../../../../domain/product/entity/product";
-import ProductInterface from "../../../../domain/product/entity/product_iterface";
+import ProductInterface from "../../../../domain/product/entity/product_interface";
 import ProductRepositoryInterface from "../../../../domain/product/repository/product_repository_interface";
 import ProductModel from "../model/product_model";
 
@@ -7,7 +7,7 @@ export default class ProductRepository implements ProductRepositoryInterface {
 
     async create(entity: ProductInterface): Promise<void> {
         await ProductModel.create({
-            id: entity.id,
+            id: entity.getId(),
             name: entity.name,
             price: entity.price
         });
@@ -19,7 +19,7 @@ export default class ProductRepository implements ProductRepositoryInterface {
             price: entity.price
         }, {    
             where: {
-                id: entity.id
+                id: entity.getId()
             }
         });
     }
