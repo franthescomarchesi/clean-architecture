@@ -2,10 +2,11 @@ import Address from "../../../../domain/customer/value_object/address";
 import Customer from "../../../../domain/customer/entity/customer";
 import CustomerRepositoryInterface from "../../../../domain/customer/repository/customer_repository_interface";
 import CustomerModel from "../model/customer_model";
+import CustomerInterface from "../../../../domain/customer/entity/customer_interface";
 
 export default class CustomerRepository implements CustomerRepositoryInterface {
 
-    async create(entity: Customer): Promise<void> {
+    async create(entity: CustomerInterface): Promise<void> {
         await CustomerModel.create({
             id: entity.getId(),
             name: entity.name,
@@ -18,7 +19,7 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
         })
     }
     
-    async update(entity: Customer): Promise<void> {
+    async update(entity: CustomerInterface): Promise<void> {
         await CustomerModel.update({
             name: entity.name,
             street: entity.address.street,
@@ -34,7 +35,7 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
         })
     }
 
-    async find(id: string): Promise<Customer> {
+    async find(id: string): Promise<CustomerInterface> {
         let customerModel
         try {
             customerModel = await CustomerModel.findOne({
@@ -55,7 +56,7 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
         return customer
     }
 
-    async findAll(): Promise<Customer[]> {
+    async findAll(): Promise<CustomerInterface[]> {
         const customerModels = await CustomerModel.findAll();
         const customers = customerModels.map(customerModel => {
             const customer = new Customer(customerModel.id, customerModel.name)
